@@ -6,6 +6,7 @@ app.get('/', (req,res) => res.send('This App is running properly!'))
 app.get('/ping', (req,res) => res.send('Pong!'))
 app.get('/youtube', (req,res) => res.send('Hello, youtube bandung!'))
 app.get('/twitter', (req,res) => res.send('Hello, twitter bandung!'))
+app.get('/facebook', (req,res) => res.send('Hello, facebook bandung!'))
 app.get('/hello/:name', (req,res) => {
     res.json({message:greeting(req.params.name)})
 })
