@@ -17,6 +17,14 @@ it('Call the / endpoint', async done => {
 })
 
 it('Call the / endpoint', async done => {
+    const res = await request.get('/facebook')
+    expect(res.status).toBe(200)
+    expect(res.text).toBe('Hello, facebook indonesia!')
+    done()
+})
+
+
+it('Call the / endpoint', async done => {
     const res = await request.get('/')
     expect(res.status).toBe(200)
     expect(res.text).toBe('This App is running properly!')
