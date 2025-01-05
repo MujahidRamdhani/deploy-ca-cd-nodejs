@@ -3,23 +3,9 @@ const supertest = require('supertest')
 const request = supertest(app)
 
 it('Call the / endpoint', async done => {
-    const res = await request.get('/youtube')
+    const res = await request.get('/instagram')
     expect(res.status).toBe(200)
-    expect(res.text).toBe('Hello, youtube indonesia!')
-    done()
-})
-
-it('Call the / endpoint', async done => {
-    const res = await request.get('/twitter')
-    expect(res.status).toBe(200)
-    expect(res.text).toBe('Hello, twitter indonesia!')
-    done()
-})
-
-it('Call the / endpoint', async done => {
-    const res = await request.get('/facebook')
-    expect(res.status).toBe(200)
-    expect(res.text).toBe('Hello, facebook indonesia!')
+    expect(res.text).toBe('Hello, instagram indonesia!')
     done()
 })
 
