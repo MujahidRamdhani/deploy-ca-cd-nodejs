@@ -8,6 +8,13 @@ it('Call the / endpoint', async done => {
     expect(res.text).toBe('Hello, instagram indonesia!')
     done()
 })
+it('Call the / endpoint', async done => {
+    const res = await request.get('/reddit')
+    expect(res.status).toBe(200)
+    expect(res.text).toBe('Hello, reddit indonesia!')
+    done()
+})
+
 
 
 it('Call the / endpoint', async done => {
