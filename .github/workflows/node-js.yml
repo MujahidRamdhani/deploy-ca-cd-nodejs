@@ -1,0 +1,20 @@
+name: CD
+on: [push]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: 
+            cd ~/home/mujahidramdhani/apps/deploy-ca-cd-nodejs
+            git pull origin main
+            git status
+            npm install --only=prod
+            pm2 restart RedditApp
