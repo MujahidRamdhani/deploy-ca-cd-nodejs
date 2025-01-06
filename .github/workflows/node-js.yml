@@ -1,18 +1,23 @@
-name: CD
-on: [push]
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  build:
-    name: Build
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Deploy using ssh
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           port: 22
-          script: 
+          script: |
             cd ~/home/mujahidramdhani/apps/deploy-ca-cd-nodejs
             git pull origin main
             git status
