@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check SSH Key Format
         run: |
-          echo "SSH Key Format Check: ${{ secrets.PRIVATE_KEY:0:10 }}..." # hanya menampilkan sebagian kunci
+          echo "SSH Key Format Check: $(echo ${{ secrets.PRIVATE_KEY }} | head -c 10)..." # hanya menampilkan sebagian kunci
 
       - name: Deploy using ssh
         uses: appleboy/ssh-action@v1.2.0
