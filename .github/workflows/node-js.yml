@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check SSH Key Format
+        run: |
+          echo "SSH Key Format Check: $(echo ${{ secrets.PRIVATE_KEY }} | head -c 10)..." # hanya menampilkan sebagian kunci
+
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd ~/home/mujahidramdhani/apps/deploy-ca-cd-nodejs
+            git pull origin main
+            git status
+            npm install --only=prod
+            pm2 restart RedditApp
