@@ -15,6 +15,13 @@ it('Call the / endpoint', async done => {
     done()
 })
 
+it('Call the / endpoint', async done => {
+    const res = await request.get('/youtube')
+    expect(res.status).toBe(200)
+    expect(res.text).toBe('Hello, youtube indonesia dan kota bandung!')
+    done()
+})
+
 
 
 it('Call the / endpoint', async done => {
