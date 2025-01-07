@@ -5,13 +5,13 @@ const request = supertest(app)
 it('Call the / endpoint', async done => {
     const res = await request.get('/instagram')
     expect(res.status).toBe(200)
-    expect(res.text).toBe('Hello, instagram indonesia!')
+    expect(res.text).toBe('Hello, instagram indonesia dan kota bandung!')
     done()
 })
 it('Call the / endpoint', async done => {
     const res = await request.get('/reddit')
     expect(res.status).toBe(200)
-    expect(res.text).toBe('Hello, reddit indonesia!')
+    expect(res.text).toBe('Hello, reddit indonesia dan kota bandung!')
     done()
 })
 
